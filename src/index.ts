@@ -3,6 +3,7 @@ import session from "express-session";
 import "dotenv/config";
 import path from "path";
 
+import authRoutes from "./routers/authRoutes";
 import userRoutes from "./routers/userRoutes";
 import roleRoutes from "./routers/roleRoutes";
 import permissionRoutes from "./routers/permissionRoutes";
@@ -24,23 +25,14 @@ app.use(
   })
 );
 
-// auto login sebagai admin
-app.use((req: any, res, next) => {
-  req.session.user = {
-    id: 1,
-    username: "admin",
-    role_id: 1,
-  };
-
-  next();
-});
+app.use(authRoutes);
 
 app.use("/users", userRoutes);
 app.use("/roles", roleRoutes);
 app.use("/permissions", permissionRoutes);
 
 app.get("/", (req, res) => {
-  res.redirect("/users");
+  res.redirect("/login");
 });
 
 app.listen(process.env.PORT || 3000, () => {

@@ -20,7 +20,7 @@
     "mysql2": "^3.22.3"
   },
   "scripts": {
-    "dev": "bun --watch src/index.ts",
-    "start": "bun src/index.ts"
+    "dev": "sudo service mysql start && bun --watch src/index.ts",
+    "start": "sudo service mysql start && bun src/index.ts"
   }
 }
