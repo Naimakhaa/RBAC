@@ -1,0 +1,37 @@
+<div class="bg-white p-6 rounded shadow">
+  <h2 class="text-xl font-bold mb-4">Tambah Role</h2>
+
+  <form action="/roles" method="POST" class="mb-6 flex gap-2">
+    <input 
+      type="text" 
+      name="name" 
+      placeholder="Nama role"
+      class="border p-2 flex-1"
+      required
+    >
+
+    <button class="bg-blue-600 text-white px-4 py-2 rounded">
+      Simpan
+    </button>
+  </form>
+
+  <h2 class="text-xl font-bold mb-4">Daftar Role</h2>
+
+  <table class="w-full border">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border p-2">ID</th>
+        <th class="border p-2">Nama Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% roles.forEach(role => { %>
+        <tr>
+          <td class="border p-2"><%= role.id %></td>
+          <td class="border p-2"><%= role.name %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

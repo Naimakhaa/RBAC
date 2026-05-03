@@ -1,0 +1,57 @@
+<div class="bg-white p-6 rounded shadow">
+  <h2 class="text-xl font-bold mb-4">Tambah Permission</h2>
+
+  <form action="/permissions" method="POST" class="mb-6 space-y-3">
+    <input 
+      type="text" 
+      name="name" 
+      placeholder="Contoh: user:create"
+      class="border p-2 w-full"
+      required
+    >
+
+    <input 
+      type="text" 
+      name="resource" 
+      placeholder="Resource, contoh: users"
+      class="border p-2 w-full"
+      required
+    >
+
+    <input 
+      type="text" 
+      name="action" 
+      placeholder="Action, contoh: create"
+      class="border p-2 w-full"
+      required
+    >
+
+    <button class="bg-blue-600 text-white px-4 py-2 rounded">
+      Simpan
+    </button>
+  </form>
+
+  <h2 class="text-xl font-bold mb-4">Daftar Permission</h2>
+
+  <table class="w-full border">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border p-2">ID</th>
+        <th class="border p-2">Nama</th>
+        <th class="border p-2">Resource</th>
+        <th class="border p-2">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% permissions.forEach(permission => { %>
+        <tr>
+          <td class="border p-2"><%= permission.id %></td>
+          <td class="border p-2"><%= permission.name %></td>
+          <td class="border p-2"><%= permission.resource %></td>
+          <td class="border p-2"><%= permission.action %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
